@@ -133,6 +133,89 @@ Id     Name     Salary
 #### 5. Max()
 **Max(salary):** Maximum value in the salary i.e., 80.
 
+### Filters
+#### 1.WHERE Clause
+It is used to filter each row based on certain condition.
+##### Syntax:
+```
+SELECT column1,column2 FROM table_name WHERE column_name operator value;
+```
+**Note:** column_name in the above syntax, means based on which column value, you want to filter the rows.
+
+#### Example
+
+![sample_table](https://media.geeksforgeeks.org/wp-content/cdn-uploads/table11.jpg)
+
+##### Query:
+```
+SELECT * FROM Student WHERE Age=20;
+```
+##### Output:
+ROLL_NO&emsp;&nbsp;NAME&emsp;ADDRESS&emsp;PHONE&emsp;&emsp;&emsp;&nbsp;Age<br/>
+   &emsp;3&emsp;&emsp;&emsp;&emsp;&emsp;SUJIT&emsp;ROHTAK&emsp;XXXXXXXXXX&emsp;20<br/>
+   &emsp;3&emsp;&emsp;&emsp;&emsp;&emsp;SUJIT&emsp;ROHTAK&emsp;XXXXXXXXXX&emsp;20<br/>
+
+
+#### 2.Having with Group By
+The GROUP BY Statement in SQL is used to arrange identical data into groups with the help of some functions. i.e if a particular column has same values in different rows then it will arrange these rows in a group.
+**Important Points:**<br />
+* GROUP BY clause is used with the SELECT statement.
+* In the query, GROUP BY clause is placed after the WHERE clause.
+* In the query, GROUP BY clause is placed before ORDER BY clause if used any.
+
+##### Syntax:
+```
+SELECT column1, function_name(column2)
+FROM table_name
+WHERE condition
+GROUP BY column1, column2
+ORDER BY column1, column2;
+```
+**Note:** function_name here means aggregate functions like Sum()
+
+#### Example
+![employee table](https://media.geeksforgeeks.org/wp-content/uploads/table8-300x253.png)
+
+##### Query:
+```
+SELECT NAME, SUM(SALARY) FROM Employee 
+GROUP BY NAME;
+```
+
+The above query will produce the below output:
+
+![group by output table](https://media.geeksforgeeks.org/wp-content/uploads/table_out-300x172.png)
+
+As you can see in the above output, the rows with duplicate NAMEs are grouped under same NAME and their corresponding SALARY is the sum of the SALARY of duplicate rows. The SUM() function of SQL is used here to calculate the sum.
+
+#### Having Clause
+We know that WHERE clause is used to place conditions on columns but what if we want to place conditions on groups?
+
+This is where HAVING clause comes into use. We can use HAVING clause to place conditions to decide which group will be the part of final result-set. Also we can not use the aggregate functions like SUM(), COUNT() etc. with WHERE clause. So we have to use HAVING clause if we want to use any of these functions in the conditions.
+
+##### Syntax:
+```
+SELECT column1, function_name(column2)
+FROM table_name
+WHERE condition
+GROUP BY column1, column2
+HAVING condition
+ORDER BY column1, column2;
+```
+##### Example
+```
+SELECT NAME, SUM(SALARY) FROM Employee 
+GROUP BY NAME
+HAVING SUM(SALARY)>3000; 
+```
+##### Output:
+![having output](https://media.geeksforgeeks.org/wp-content/uploads/Screenshot-56.png)
+
+As you can see in the above output only one group out of the three groups appears in the result-set as it is the only group where sum of SALARY is greater than 3000. So we have used HAVING clause here to place this condition as the condition is required to be placed on groups not columns.
+
+
+
+
 ## Normalization
 Normalization is the process of minimizing redundancy from a relation or set of relations. Redundancy in relation may cause insertion, deletion, and update anomalies. So, it helps to minimize the redundancy in relations. Normal forms are used to eliminate or reduce redundancy in database tables.
 
