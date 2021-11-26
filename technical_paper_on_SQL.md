@@ -92,7 +92,7 @@ ON table1.matching_column = table2.matching_column;
 ```
 ![full join](https://i.stack.imgur.com/3Ll1h.png)
 
-## Aggregate functions
+## Aggregate functions and Filters
 In database management an aggregate function is a function where the values of multiple rows are grouped together as input on certain criteria to form a single value of more significant meaning.
 
 Following are some of the basic Aggregate functions,
@@ -212,9 +212,6 @@ HAVING SUM(SALARY)>3000;
 ![having output](https://media.geeksforgeeks.org/wp-content/uploads/Screenshot-56.png)
 
 As you can see in the above output only one group out of the three groups appears in the result-set as it is the only group where sum of SALARY is greater than 3000. So we have used HAVING clause here to place this condition as the condition is required to be placed on groups not columns.
-
-
-
 
 ## Normalization
 Normalization is the process of minimizing redundancy from a relation or set of relations. Redundancy in relation may cause insertion, deletion, and update anomalies. So, it helps to minimize the redundancy in relations. Normal forms are used to eliminate or reduce redundancy in database tables.
